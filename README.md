@@ -17,11 +17,78 @@ Transform your whiteboard sketches into working prototypes using Claude Code SDK
                    [Prototype lands in your local folder]
 ```
 
-This is NOT just a Messages API integration that returns code as text. This uses the **Claude Code SDK** to spin up Claude as an actual agent that autonomously:
-- Reads and understands your whiteboard sketch
-- Creates real files on your machine
-- Builds a complete, functional prototype
-- Saves everything to `__output__/` organized by timestamp
+# Quick Start Guide
+
+Get up and running in under 2 minutes.
+
+## Prerequisites
+
+- Node.js 18+ installed
+- Anthropic API key ([get one here](https://console.anthropic.com))
+
+## Quick Start
+
+```bash
+# 1. Navigate to the project directory
+cd whiteboard-to-prototype
+
+# 2. Run the startup script
+./start.sh
+
+# The script will:
+# - Check Node.js installation
+# - Create .env file if missing
+# - Install dependencies
+# - Start the server
+```
+
+## Manual Start (Alternative)
+
+If you prefer to start manually:
+
+```bash
+# 1. Install dependencies
+npm install
+
+# 2. Create .env file
+cp .env.example .env
+
+# 3. Edit .env and add your API key
+nano .env  # or use any text editor
+
+# 4. Start server
+npm start
+```
+
+## Using the App
+
+1. **Open in browser**: http://localhost:3000
+2. **On mobile**: Use your phone's browser with same URL (must be on same network)
+3. **Take/upload photo**: Click the upload area
+4. **Add instructions** (optional): Specify any requirements
+5. **Build**: Click "Build Prototype"
+6. **View**: See your live prototype in the iframe
+7. **Access files**: Check `__output__/prototype-[timestamp]/`
+
+## Viewing History
+
+Visit http://localhost:3000/history to see:
+- All previous whiteboard sessions
+- Thumbnails of each whiteboard
+- Cost and token usage per session
+- Direct links to generated prototypes
+
+## Common Commands
+
+```bash
+# Start server
+npm start
+
+# Development mode (auto-reload)
+npm run dev
+
+# View server logs
+# (logs display in terminal with [PREFIX] format)
 
 ## Features
 
@@ -47,17 +114,6 @@ This is NOT just a Messages API integration that returns code as text. This uses
    npm install
    ```
 
-2. **Your API key is already configured** in the `.env` file
-
-3. **Start the server:**
-   ```bash
-   npm start
-   ```
-
-   For development with auto-reload:
-   ```bash
-   npm run dev
-   ```
 
 ## Usage
 
@@ -84,32 +140,6 @@ whiteboard-to-prototype/
     └── ...
 ```
 
-## How the Claude Code SDK Works
-
-Unlike the basic Messages API that just returns code as text, the Claude Code SDK:
-
-1. **Spins up Claude as an agent** with autonomous capabilities
-2. **Reads and analyzes** your whiteboard image using vision
-3. **Creates real files** in your `__output__` directory
-4. **Builds complete prototypes** with HTML, CSS, and JavaScript
-5. **Organizes by timestamp** so you have a complete history
-
-Each prototype is self-contained in its own timestamped folder with all necessary files.
-
-## API Endpoints
-
-- `GET /` - Main upload interface (mobile-optimized)
-- `POST /upload` - Upload and process whiteboard image
-- `GET /demos/:prototype-folder/index.html` - View generated prototypes
-
-## Configuration
-
-The server uses **Claude Opus 4.5** by default. This is the most powerful model for understanding sketches and building prototypes. You can modify the model in `server.js`:
-
-```javascript
-model: 'claude-opus-4-5-20251101'  // or 'claude-sonnet-4-5'
-```
-
 ## Tips
 
 - Take clear, well-lit photos of your whiteboard
@@ -129,7 +159,6 @@ Each prototype generation typically costs $0.10-0.50 depending on complexity.
 ## Troubleshooting
 
 **"ANTHROPIC_API_KEY not set"**
-- Your API key is already configured in the `.env` file
 - Make sure the `.env` file exists in the project root
 
 **"Files not generating"**
