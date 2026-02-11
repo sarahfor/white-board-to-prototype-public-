@@ -6,15 +6,15 @@ Transform your whiteboard sketches into working prototypes using Claude Code SDK
 
 ```
 [Whiteboard] → [Phone photo] → [Upload to local app]
-                                        ↓
-                          [Claude Code SDK receives image]
-                                        ↓
-                   [Claude Code READS the whiteboard]
-                                        ↓
-                   [Claude Code BUILDS the prototype]
-                      (creates files, runs, iterates)
-                                        ↓
-                   [Prototype lands in your local folder]
+ ↓
+[Claude Code SDK receives image]
+↓
+[Claude Code READS the whiteboard]
+↓
+[Claude Code BUILDS the prototype]
+(creates files, runs, iterates)
+↓
+[Prototype lands in your local folder]
 ```
 
 # Quick Start Guide
